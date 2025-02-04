@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Digite sua idade: ");
+        int idade = sc.nextInt();
+
+        int faixaEtaria = (idade < 12) ? 1 : (idade >12 && idade <= 18) ? 2 : (idade <= 60) ? 3 : 4;
+
+        switch (faixaEtaria) {
+            case 1:
+                System.out.println("Criança");
+                break;
+            case 2:
+                System.out.println("Adolescente");
+                break;
+            case 3:
+                System.out.println("Adulto");
+                break;
+            case 4:
+                System.out.println("Idoso");
+                break;
+            default:
+                System.out.println("Idade inválida");
+        }
+    }
+}
