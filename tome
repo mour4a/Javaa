@@ -1,0 +1,72 @@
+import java.util.Scanner;
+
+public class atv3 {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            char resposta4 = 's';
+            char sexo = 0;
+            String nomeCliente = "a", nomeCliente2, nomeCliente3;
+            int dataNascimento = 0;
+            do {
+                String escolha;
+                System.out.println("1-Cadastrar cliente");
+                System.out.println("2-Consultar cliente");
+                System.out.println("3-Excluir cliente");
+                System.out.println("4-Sair");
+                System.out.println("Digite sua escolha: ");
+                escolha = sc.nextLine();
+                switch (escolha) {
+                    case "1":
+                        System.out.println("Digite o nome do cliente: ");
+                        nomeCliente = sc.next();
+                        System.out.println("Digite o ano de nascimento: ");
+                        dataNascimento = sc.nextInt();
+                        System.out.println("Digite o sexo: ");
+                        sexo = sc.next().charAt(0);
+                        switch (sexo) {
+                            case 'm':
+                                System.out.println("Masculino");
+                                break;
+                            case 'f':
+                                System.out.println("Feminino");
+                                break;
+                        }
+                        System.out.println("Nome do cliente: " + nomeCliente);
+                        System.out.println("Data de ano de nascimento: " + dataNascimento);
+                        System.out.println("Sexo: " + sexo);
+                        break;
+                    case "2":
+                        System.out.println("Digite o nome do cliente: ");
+                        nomeCliente2 = sc.next();
+                        if (nomeCliente2.equals(nomeCliente)) {
+                            System.out.println("Nome do cliente: " + nomeCliente);
+                            System.out.println("Data de Nascimento: " + dataNascimento);
+                            System.out.println("Sexo: " + sexo);
+                        } else {
+                            System.out.println("Cliente não cadastrado!");
+                        }
+                        break;
+                    case "3":
+                        System.out.println("Digite o nome do cliente: ");
+                        nomeCliente3 = sc.next();
+                        if (nomeCliente3 == nomeCliente) {
+                            System.out.println("Tem certeza que deseja excluir cliente?S/N");
+                            String resposta = sc.next();
+                            if (resposta == "S") {
+                                System.out.println("Cliente excluido com sucesso!");
+                            } else {
+                                System.out.println("Atividade cancelada com sucesso!");
+                            }
+                        } else {
+                            System.out.println("Cliente não cadastrado!");
+                        }
+                        break;
+                    case "4":
+                        System.out.println("Saindo... Até logo!");
+                        break;
+                }
+                System.out.println("Deseja continuar?");
+                resposta4 = sc.next().charAt(0);
+            } while(resposta4 == 's');
+        }
+}
