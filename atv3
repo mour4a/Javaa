@@ -1,0 +1,82 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char resposta4 = 's';
+        char sexo = 0;
+        String nomeCliente = "a", nomeCliente2, nomeCliente3;
+        int dataNascimento = 0;
+
+        do {
+            String escolha;
+            System.out.println("1-Cadastrar cliente");
+            System.out.println("2-Consultar cliente");
+            System.out.println("3-Excluir cliente");
+            System.out.println("4-Sair");
+            System.out.print("Digite sua escolha: ");
+            escolha = sc.nextLine(); // Usando nextLine() para ler a linha inteira
+
+            switch (escolha) {
+                case "1":
+                    System.out.println("Digite o nome do cliente: ");
+                    nomeCliente = sc.nextLine(); // Usando nextLine() para capturar o nome completo
+                    System.out.println("Digite o ano de nascimento: ");
+                    dataNascimento = Integer.parseInt(sc.nextLine()); // Lê como string e converte
+                    System.out.println("Digite o sexo (m/f): ");
+                    sexo = sc.nextLine().charAt(0); // Lê o sexo como char
+                    switch (sexo) {
+                        case 'm':
+                            System.out.println("Masculino");
+                            break;
+                        case 'f':
+                            System.out.println("Feminino");
+                            break;
+                    }
+                    System.out.println("Nome do cliente: " + nomeCliente);
+                    System.out.println("Data de nascimento: " + dataNascimento);
+                    System.out.println("Sexo: " + sexo);
+                    break;
+                case "2":
+                    System.out.println("Digite o nome do cliente: ");
+                    nomeCliente2 = sc.nextLine();
+                    if (nomeCliente2.equals(nomeCliente)) {
+                        System.out.println("Nome do cliente: " + nomeCliente);
+                        System.out.println("Data de Nascimento: " + dataNascimento);
+                        System.out.println("Sexo: " + sexo);
+                    } else {
+                        System.out.println("Cliente não cadastrado!");
+                    }
+                    break;
+                case "3":
+                    System.out.println("Digite o nome do cliente: ");
+                    nomeCliente3 = sc.nextLine();
+                    if (nomeCliente3.equals(nomeCliente)) {
+                        System.out.println("Tem certeza que deseja excluir o cliente? S/N");
+                        String resposta = sc.nextLine(); // Usando nextLine() para capturar a resposta inteira
+                        if (resposta.equalsIgnoreCase("S")) {
+                            System.out.println("Cliente excluído com sucesso!");
+                        } else {
+                            System.out.println("Atividade cancelada com sucesso!");
+                        }
+                    } else {
+                        System.out.println("Cliente não cadastrado!");
+                    }
+                    break;
+                case "4":
+                    System.out.println("Saindo... Até logo!");
+                    break;
+                default:
+                    System.out.println("Escolha inválida. Tente novamente.");
+                    break;
+            }
+
+            // Pergunta se o usuário deseja continuar
+            System.out.print("Deseja continuar? (S/N): ");
+            resposta4 = sc.nextLine().charAt(0); // Usando nextLine() para capturar a resposta inteira
+
+        } while (resposta4 == 's' || resposta4 == 'S');  // Permite 's' ou 'S' para continuar
+
+        sc.close();  // Fechando o scanner
+    }
+}
