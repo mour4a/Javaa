@@ -1,0 +1,28 @@
+public class Animal {
+    void emitirSom() {
+        System.out.println("Som genérico de animal");
+    }
+    void mover() {
+        System.out.println("O animal está se movendo");
+    }
+}
+class Cachorro extends Animal {
+    @Override
+    void emitirSom() {
+        System.out.println("Au au");
+    }
+}
+class Peixe extends Animal {
+    @Override
+    void mover() {
+        System.out.println("O peixe está nadando");
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Animal meuCachorro = new Cachorro();
+        meuCachorro.emitirSom();
+        Animal meuPeixe = new Peixe();
+        meuPeixe.mover();
+    }
+}
