@@ -1,0 +1,106 @@
+import java.util.Scanner;
+
+public class Televisor {
+    private int canal = 1;
+    private int volume = 10;
+
+    public Televisor(int canal, int volume) {
+        this.canal = canal;
+        this.volume = volume;
+    }
+
+    public int getCanal() {
+        return canal;
+    }
+
+    public void setCanal(int canal) {
+        this.canal = canal;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    // Método para aumentar o volume
+    public void aumentarVolume(int aumento) {
+        if (aumento > 0) {
+            volume += aumento;
+        } else {
+            System.out.println("Digite um valor válido para aumentar o volume.");
+        }
+    }
+
+    // Método para diminuir o volume
+    public void diminuirVolume(int diminuicao) {
+        if (diminuicao > 0 && volume - diminuicao >= 0) {
+            volume -= diminuicao;
+        } else {
+            System.out.println("Digite um valor válido para diminuir o volume.");
+        }
+    }
+
+    // Método para mudar o canal
+    public void mudarCanal(int novoCanal) {
+        if (novoCanal > 0) {
+            canal = novoCanal;
+        } else {
+            System.out.println("Digite um número de canal válido.");
+        }
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Solicita o número do canal e o volume inicial
+        System.out.println("Digite o número do canal: ");
+        int canal = sc.nextInt();
+
+        System.out.println("Digite o volume inicial: ");
+        int volume = sc.nextInt();
+
+        // Limpa o buffer do scanner
+        sc.nextLine();
+
+        // Criação do televisor com as configurações iniciais
+        Televisor meuTelevisor = new Televisor(canal, volume);
+
+        // Pergunta ao usuário se deseja aumentar o volume
+        System.out.println("Deseja aumentar o volume? (s/n)");
+        String resposta = sc.nextLine();
+        if (resposta.equals("s")) {
+            System.out.println("Quanto deseja aumentar o volume?");
+            int aumento = sc.nextInt();
+            meuTelevisor.aumentarVolume(aumento);
+        } else if (resposta.equals("n")) {
+            System.out.println("Deseja diminuir o volume? (s/n)");
+            resposta = sc.nextLine();  // Limpa o buffer do scanner
+            if (resposta.equals("s")) {
+                System.out.println("Quanto deseja diminuir o volume?");
+                int diminuicao = sc.nextInt();
+                meuTelevisor.diminuirVolume(diminuicao);
+            }
+        }
+
+        // Pergunta ao usuário se deseja mudar o canal
+        sc.nextLine();  // Limpa o buffer do scanner
+        System.out.println("Deseja mudar o canal? (s/n)");
+        resposta = sc.nextLine();
+        if (resposta.equals("s")) {
+            System.out.println("Digite o novo número do canal:");
+            int novoCanal = sc.nextInt();
+            meuTelevisor.mudarCanal(novoCanal);
+        }
+
+        // Exibe o canal e volume final
+        System.out.println("Canal atual: " + meuTelevisor.getCanal());
+        System.out.println("Volume atual: " + meuTelevisor.getVolume());
+
+        sc.close();
+    }
+}
