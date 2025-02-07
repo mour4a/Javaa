@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+public class Carro {
+    private String marca;
+    private String modelo;
+    private int velocidadeAtual=0;
+    private int aceleracao;
+
+    public Carro(String marca, String modelo, int velocidadeAtual, int aceleracao) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.velocidadeAtual = velocidadeAtual;
+        this.aceleracao = aceleracao;
+
+    }
+    public void aceleracao(int aumento) {
+        if (aumento > 0) {
+            this.velocidadeAtual += aumento; // Aumenta a velocidade atual
+        } else {
+            System.out.println("A aceleração deve ser um valor positivo.");
+        }
+    }
+
+    public int getVelocidadeAtual() {
+        return this.velocidadeAtual;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Digite a marca do carro: ");
+        String marca = sc.nextLine();
+        int velocidadeAtual = 0;
+        System.out.println("Digite o modelo do carro: ");
+        String modelo = sc.nextLine();
+        System.out.println("Digite a aceleração do carro: ");
+        int aceleracao = sc.nextInt();
+
+        Carro meuCarro = new Carro(marca, modelo, velocidadeAtual, aceleracao);
+        System.out.println(meuCarro.marca);
+        System.out.println(meuCarro.modelo);
+        System.out.println(meuCarro.aceleracao);
+        
+
+    }
+}
