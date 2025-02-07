@@ -1,0 +1,37 @@
+public class Calculadora {
+
+    // Método para somar dois números
+    public static double somar(double a, double b) {
+        return a + b;
+    }
+
+    // Método para subtrair dois números
+    public static double subtrair(double a, double b) {
+        return a - b;
+    }
+
+    // Método para multiplicar dois números
+    public static double multiplicar(double a, double b) {
+        return a * b;
+    }
+
+    // Método para dividir dois números
+    public static double dividir(double a, double b) {
+        if (b == 0) {
+            System.out.println("Erro: Não é possível dividir por zero.");
+            return Double.NaN; // Retorna NaN (Not a Number) em caso de divisão por zero
+        }
+        return a / b;
+    }
+
+    public static void main(String[] args) {
+        // Testando a classe Calculadora
+        double a = 10.5;
+        double b = 2.0;
+
+        System.out.println("Soma: " + Calculadora.somar(a, b));
+        System.out.println("Subtração: " + Calculadora.subtrair(a, b));
+        System.out.println("Multiplicação: " + Calculadora.multiplicar(a, b));
+        System.out.println("Divisão: " + Calculadora.dividir(a, b));
+    }
+}
