@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class Funcionario {
+    private String nome;
+    private String cargo;
+    private double bonus=10/100, salario;
+
+    public Funcionario(String nome, String cargo, double bonus, double salario) {
+
+        this.nome = nome;
+        this.cargo = cargo;
+        this.bonus = bonus;
+        this.salario = salario;
+
+    }
+
+    public double getBonus() {
+        return bonus;
+    }
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
+    public String getCargo() {
+        return cargo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Digite o nome do funcionario: ");
+        String nome = sc.nextLine();
+
+        System.out.println("Digite o cargo do funcionario: ");
+        String cargo = sc.nextLine();
+
+        System.out.println("Digite o salario do funcionario: ");
+        double salario = sc.nextDouble();
+        double bonus = salario + (salario * 0.10);
+
+
+        Funcionario p = new Funcionario(nome, cargo, bonus, salario);
+
+        System.out.println("Nome do funcionario: " + p.getNome());
+        System.out.println("Cargo: " + p.getCargo());
+        System.out.println("Bonus do salario: " + p.getBonus());
+    }
+}
