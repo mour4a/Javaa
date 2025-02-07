@@ -1,0 +1,36 @@
+import java.util.Scanner;
+public class Conta{
+    int numero;
+    double saldo,deposito, sacar;
+    public Conta(int numero, double saldo, double sacar){
+        this.numero = numero;
+        this.saldo = saldo;
+        this.sacar = sacar;
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Digite o numero: ");
+        int numero = sc.nextInt();
+        System.out.println("Digite o saldo: ");
+        double saldo = sc.nextDouble();
+        Conta conta = new Conta(numero,saldo,0);
+        System.out.println("Digite o valor do deposito: ");
+        conta.saldo = sc.nextDouble();
+        saldo += conta.saldo;
+        conta.sacar = saldo;
+        System.out.println(saldo);
+        System.out.println("Digite o valor que deseja sacar: ");
+        conta.saldo= sc.nextDouble();
+        if(conta.sacar>conta.saldo){
+            conta.sacar -= conta.saldo;
+            conta.sacar = conta.sacar;
+            System.out.println(conta.sacar);
+        }else{
+            System.out.println("Saldo insuficiente");
+        }
+
+    }
+}
