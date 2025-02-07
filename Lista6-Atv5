@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class Produto {
+    private String nome;
+    private double preco;
+    private double desconto;
+
+    public Produto(String nome, double preco, double desconto) {
+        this.nome = nome;
+        this.preco = preco;
+        this.desconto = desconto;
+    }
+
+    public double desconto() {
+        return desconto=preco - (preco * desconto / 100);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public double getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(double desconto) {
+        this.desconto = desconto;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Digite o nome do produto: ");
+        String nome = sc.nextLine();
+
+        System.out.println("Digite o preço do produto: ");
+        double preco = sc.nextDouble();
+        sc.nextLine(); 
+
+        System.out.println("Digite o desconto do produto: ");
+        double desconto = sc.nextDouble();
+        desconto=preco - (preco * desconto / 100);
+
+
+        Produto p = new Produto(nome, preco, desconto);
+
+        System.out.println("Nome do produto: " + p.getNome());
+        System.out.println("Preço do produto: " + p.getPreco());
+        System.out.println("Desconto do produto: " + p.getDesconto());
+    }
+}
