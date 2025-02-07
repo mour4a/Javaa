@@ -1,0 +1,27 @@
+import java.util.Scanner;
+public class Livro{
+    String autor;
+    String titulo;
+    int numPaginas;
+    public Livro(String autor, String titulo , int numPaginas){
+        this.autor = autor;
+        this.titulo = titulo;
+        this.numPaginas = numPaginas;
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Digite o autor do Livro: ");
+        String autor = sc.nextLine();
+        System.out.println("Digite o titulo do Livro: ");
+        String titulo = sc.nextLine();
+        System.out.println("Digite o numero de paginas do Livro: ");
+        int numPaginas = sc.nextInt();
+        Livro livro = new Livro(autor, titulo, numPaginas);
+        System.out.println("Autor: " + livro.autor);
+        System.out.println("Titulo: " + livro.titulo);
+        System.out.println("Numero de paginas: " + livro.numPaginas);
+    }
+}
