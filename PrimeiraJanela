@@ -1,0 +1,15 @@
+import javax.swing.JFrame;
+public class MinhaJanela extends JFrame{
+    private final boolean True=true;
+
+    public MinhaJanela() {
+        setTitle("Minha primeira janela");
+        setSize(400,300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(True);
+    }
+    public static void main(String[] args) {
+        new MinhaJanela();
+    }
+}
+
