@@ -1,0 +1,20 @@
+import javax.swing.*;
+import java.awt.*;
+public class ExemploJPanel extends JFrame{
+  public ExemploJPanel(){
+      setTitle("Exemplo JPanel");
+      setSize(500,500);
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      JPanel painel = new JPanel();
+      painel.setBackground(Color.yellow);
+      JPanel painel2 = new JPanel();
+      painel2.setBackground(Color.green);
+      add(painel,BorderLayout.NORTH);
+      add(painel2,BorderLayout.CENTER);
+      setVisible(true);
+  }
+    public static void main(String[] args) {
+        new ExemploJPanel();
+    }
+}
+
