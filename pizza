@@ -1,0 +1,64 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Pizza extends JFrame {
+    private JCheckBox queijo, peperoni, milho, azeitonas;
+    private JButton exibirButton;
+    private JTextArea areaIngredientes;
+
+    public Pizza() {
+        setTitle("Seleção de Ingredientes de Pizza");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+        JPanel painelIngredientes = new JPanel();
+        painelIngredientes.setLayout(new GridLayout(6, 1));
+
+        queijo = new JCheckBox("Queijo");
+        peperoni = new JCheckBox("Peperoni");
+        milho = new JCheckBox("Milho");
+        azeitonas = new JCheckBox("Azeitonas");
+        painelIngredientes.add(queijo); 
+        painelIngredientes.add(peperoni);
+        painelIngredientes.add(milho);
+        painelIngredientes.add(azeitonas);
+        add(painelIngredientes, BorderLayout.CENTER);
+        exibirButton = new JButton("Exibir Ingredientes Selecionados");
+        add(exibirButton, BorderLayout.NORTH);
+        areaIngredientes = new JTextArea(5, 20);
+        areaIngredientes.setEditable(false);
+        add(new JScrollPane(areaIngredientes), BorderLayout.SOUTH);
+        exibirButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                exibirIngredientes();
+            }
+        });
+    }
+    private void exibirIngredientes() {
+        StringBuilder ingredientesSelecionados = new StringBuilder("Ingredientes Selecionados:\n");
+        if (queijo.isSelected()) {
+            ingredientesSelecionados.append("Queijo\n");
+        }
+        if (peperoni.isSelected()) {
+            ingredientesSelecionados.append("Peperoni\n");
+        }
+        if (milho.isSelected()) {
+            ingredientesSelecionados.append("Milho\n");
+        }
+        if (azeitonas.isSelected()) {
+            ingredientesSelecionados.append("Azeitonas\n");
+        }
+
+        if (ingredientesSelecionados.toString().equals("Ingredientes Selecionados:\n")) {
+            ingredientesSelecionados.append("Nenhum ingrediente selecionado.");
+        }
+
+        areaIngredientes.setText(ingredientesSelecionados.toString());
+    }
+
+    public static void main(String[] args) {
+        Pizza app = new Pizza();
+        app.setVisible(true);
+    }
+}
