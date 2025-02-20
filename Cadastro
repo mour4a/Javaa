@@ -1,0 +1,86 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+
+public class Cadastro extends JFrame {
+    private JTextField nome, email, senha;
+    private JButton salvar;
+    private JList<String> listaAlunos;
+    private DefaultListModel<String> listModel;
+    private ArrayList<String> usuarios;
+    private JCheckBox termos;
+
+    public Cadastro() {
+        usuarios = new ArrayList<>();
+        listModel = new DefaultListModel<>();
+        setTitle("Cadastro de usuário");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        JPanel painelCampos = new JPanel();
+        painelCampos.setLayout(new GridLayout(5, 2)); // Mudando para 5 linhas para acomodar o checkbox
+
+        painelCampos.add(new JLabel("Nome:"));
+        nome = new JTextField();
+        painelCampos.add(nome);
+
+        painelCampos.add(new JLabel("E-mail:"));
+        email = new JTextField();
+        painelCampos.add(email);
+
+        painelCampos.add(new JLabel("Senha:"));
+        senha = new JTextField();
+        painelCampos.add(senha);
+
+        // Adicionando o checkbox para aceitar termos de uso
+        termos = new JCheckBox("Aceitar os termos de uso");
+        painelCampos.add(termos);
+
+        salvar = new JButton("Salvar");
+        painelCampos.add(salvar);
+
+        add(painelCampos, BorderLayout.NORTH);
+
+        listaAlunos = new JList<>(listModel);
+        add(new JScrollPane(listaAlunos), BorderLayout.CENTER);
+
+        salvar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (termos.isSelected()) { // Verificando se o checkbox está marcado
+                    salvarUsuario();
+                } else {
+                    JOptionPane.showMessageDialog(Cadastro.this, "Você deve aceitar os termos de uso.");
+                }
+            }
+        });
+    }
+
+    public void salvarUsuario() {
+        String nomeText = nome.getText();
+        String senhaStr = senha.getText();
+        String emailText = email.getText();
+        try {
+            int senhaValor = Integer.parseInt(senhaStr);
+            String usuario = "Nome: " + nomeText + " | Senha: " + senhaValor + " | Email: " + emailText;
+            usuarios.add(usuario);
+            listModel.addElement(usuario);
+            limparCampos();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "A senha precisa ser um número.");
+        }
+    }
+
+    private void limparCampos() {
+        nome.setText("");
+        senha.setText("");
+        email.setText("");
+        termos.setSelected(false);
+    }
+
+    public static void main(String[] args) {
+        Cadastro cadastro = new Cadastro();
+        cadastro.setVisible(true);
+    }
+}
